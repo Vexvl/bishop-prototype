@@ -29,6 +29,7 @@ http://localhost:8081
 
 ## Конфигурация (application.properties)
 
+```xml
 server.port=8081
 audit.kafka-enabled=true
 audit.kafka-topic=audit-topic
@@ -39,6 +40,7 @@ management.endpoints.web.exposure.include=*
 management.endpoint.metrics.access=read_only
 management.endpoint.prometheus.access=read_only
 management.prometheus.metrics.export.enabled=true
+```
 
 ## REST API
 
@@ -55,9 +57,11 @@ POST /commands
 
 curl пример:
 
+```xml
 curl -X POST http://localhost:8081/commands \
 -H "Content-Type: application/json" \
 -d '{"description":"Scan area","priority":"COMMON","author":"Bishop","time":"2025-07-25T12:05:00"}'
+```
 
 Возможные ответы:
 
