@@ -48,12 +48,14 @@ POST /commands
 
 Пример запроса:
 
+```xml
 {
   "description": "Scan area",
   "priority": "COMMON",
   "author": "Bishop",
   "time": "2025-07-25T12:05:00"
 }
+```
 
 curl пример:
 
