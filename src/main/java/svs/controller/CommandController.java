@@ -2,6 +2,7 @@ package svs.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,7 @@ public class CommandController {
     private final MetricsService metricsService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<String> submitCommand(@Valid @RequestBody CommandDto commandDto) {
         log.info("submitCommand received");
         commandService.executeCommand(CommandMapper.toCommand(commandDto));
@@ -30,6 +32,7 @@ public class CommandController {
     }
 
     @GetMapping("/stats")
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<CommandStatsDto> getStats() {
         CommandStatsDto dto = CommandStatsMapper.toCommandStatsDto(metricsService.getTotalCommands(),
                 metricsService.getUptimeSeconds());
